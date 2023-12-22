@@ -1,6 +1,9 @@
 mat-card {
   margin: 10px;
   text-align: center;
+  min-height: 300px;
+  min-width: 120px;
+  max-width: 14vw;
 }
 .mat-mdc-card {
   background-color: lightskyblue;
@@ -38,7 +41,7 @@ mat-card {
   color: greenyellow;
 }
 .symbol {
-  width: 25%;
+  width: 20%;
 }
 .night {
   color: darkslategrey;
@@ -46,6 +49,7 @@ mat-card {
 @media (max-width: 980px) {
   mat-card {
     height: unset;
+    max-width: unset;
   }
   .card-image {
     max-width: 20%;

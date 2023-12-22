@@ -4,22 +4,52 @@
       getDay(dayForecast.date)
     }}</mat-card-title>
     <ng-template #cityTitle>
-      <mat-card-title>{{ cityDetails.name }}</mat-card-title>
+      <div>
+        <mat-card-title>{{ cityDetails.name }} </mat-card-title>
+      </div>
+      <div>
+        <img
+          [src]="heartImage"
+          alt="heart"
+          (click)="removeFromFavorites(cityDetails)"
+        />
+      </div>
     </ng-template>
   </mat-card-header>
   <img
+    *ngIf="dayForecast"
     mat-card-image
     [src]="getImage(dayForecast.phrase)"
     alt="Card Image"
     class="card-image"
   />
+  <img
+    *ngIf="cityDetails"
+    mat-card-image
+    [src]="getImage(cityDetails.currentWeather.currentWeather.WeatherText)"
+    alt="Card Image"
+    class="card-image"
+  />
   <mat-card-content class="content-container">
     <div class="phrase">
-      <p>{{ dayForecast.phrase }}</p>
+      <p *ngIf="dayForecast">{{ dayForecast.phrase }}</p>
+      <p *ngIf="cityDetails">
+        {{ cityDetails.currentWeather.currentWeather.WeatherText }}
+      </p>
     </div>
 
     <div class="day">
-      {{ convertTemperature(dayForecast.maxTemperature) }}
+      <span *ngIf="dayForecast">
+        {{ convertTemperature(dayForecast.maxTemperature) }}</span
+      >
+      <span *ngIf="cityDetails">
+        {{
+          convertTemperature(
+            cityDetails.currentWeather.currentWeather.ApparentTemperature
+              .Imperial.Value
+          )
+        }}</span
+      >
     </div>
     <img
       mat-card-image
@@ -27,7 +57,7 @@
       class="symbol"
       alt="symbol"
     />
-    <div class="night">
+    <div class="night" *ngIf="dayForecast">
       {{ convertTemperature(dayForecast.minTemperature) }}
     </div>
   </mat-card-content>

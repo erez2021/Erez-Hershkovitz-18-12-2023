@@ -8,7 +8,7 @@ export const appReducer = createReducer(
     ...lastState,
     selectedCity,
   })),
-  on(Actions.addCityToFavorites, (lastState, { city }) => {
+  on(Actions.updateCityToFavorites, (lastState, { city }) => {
     const cityIndex = lastState.favoriteCities.findIndex(
       (favoriteCity) => favoriteCity.id === city.id
     );
@@ -26,7 +26,9 @@ export const appReducer = createReducer(
     const cityIndex = lastState.favoriteCities.findIndex(
       (favoriteCity) => favoriteCity.id === city.id
     );
-    const updatedFavoriteCities = [...lastState.favoriteCities];
+    const updatedFavoriteCities = JSON.parse(
+      JSON.stringify(lastState.favoriteCities)
+    );
     if (cityIndex !== -1) {
       updatedFavoriteCities[cityIndex].currentWeather = {
         ...updatedFavoriteCities[cityIndex],

@@ -9,7 +9,7 @@ const getSelectedCity = createAction(
   'GET_SELECTED_CITY',
   props<{ selectedCityId: string }>()
 );
-const addCityToFavorites = createAction(
+const updateCityToFavorites = createAction(
   'ADD_CITY_TO_FAVORITES',
   props<{ city: City }>()
 );
@@ -25,7 +25,7 @@ const updateFavoriteCities = createAction(
 export const Actions = {
   setSelectedCity,
   getSelectedCity,
-  addCityToFavorites,
+  updateCityToFavorites,
   setMeasureSystem,
   updateFavoriteCities,
 };

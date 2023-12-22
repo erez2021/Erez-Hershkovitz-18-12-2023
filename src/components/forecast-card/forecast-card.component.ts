@@ -50,7 +50,7 @@ export class ForecastCardComponent implements OnInit {
     );
     audio.play();
     this.store.dispatch(
-      Actions.addCityToFavorites({ city: this.selectedCity })
+      Actions.updateCityToFavorites({ city: this.selectedCity })
     );
   }
 }

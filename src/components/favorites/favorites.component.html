@@ -1,13 +1,15 @@
 <div>
-  <div *ngIf="mockFavoriteCities.length; else noFavorites">
+  <div *ngIf="favoriteCities.length; else noFavorites">
     <div class="favorites-container">
-      <div *ngFor="let city of mockFavoriteCities">
+      <div *ngFor="let city of favoriteCities">
         <app-card [cityDetails]="city" />
       </div>
     </div>
   </div>
 
   <ng-template #noFavorites>
-    <p>No favorite cities yet.</p>
+    <div class="no-content">
+      <h2>No favorite cities yet</h2>
+    </div>
   </ng-template>
 </div>
