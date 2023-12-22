@@ -25,7 +25,6 @@ export class WeatherComponent implements OnInit {
   selectedCityForecast: any = [];
   selectedCityWeather: string = '';
   measureSystem: string = 'Celcius';
-  placeholder: string = 'Search city';
 
   filteredLocations: location[] = [];
 
@@ -94,9 +93,5 @@ export class WeatherComponent implements OnInit {
     } else {
       this.filteredLocations = [];
     }
-  }
-
-  removePlaceholder() {
-    this.placeholder = '';
   }
 }

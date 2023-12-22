@@ -4,7 +4,7 @@ import { ModalComponent } from 'src/components/dashboard/modal/modal.component';
 import axios from 'axios';
 
 const API_KEY = 'tEEavAr1t1U5mu4Gbpd9fcXA7YXkidKw';
-const BASE_URL = 'http://dataservice.accuweather.com/';
+const BASE_URL = 'https://dataservice.accuweather.com/';
 
 @Injectable({
   providedIn: 'root',

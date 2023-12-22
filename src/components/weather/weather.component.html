@@ -1,13 +1,14 @@
 <div class="container">
   <div>
-    <input
-      type="text"
-      matInput
-      [formControl]="cityFormControl"
-      (input)="searchCity($event)"
-      (focus)="removePlaceholder()"
-      [placeholder]="placeholder"
-    />
+    <div class="input-container">
+      <label for="">Search city</label>
+      <input
+        type="text"
+        matInput
+        [formControl]="cityFormControl"
+        (input)="searchCity($event)"
+      />
+    </div>
     <mat-option
       *ngFor="let location of filteredLocations"
       [value]="location.city"
