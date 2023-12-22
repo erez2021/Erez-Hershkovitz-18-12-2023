@@ -44,7 +44,6 @@ export class WeatherComponent implements OnInit {
 
   async ngOnInit() {
     this.load5DaysForecast();
-    console.log(this.selectedCityForecast);
   }
 
   async load5DaysForecast() {

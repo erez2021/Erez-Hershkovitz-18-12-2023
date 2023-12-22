@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+
 import { Store } from '@ngrx/store';
 
 import { City } from 'src/models/city.interface';
@@ -13,45 +14,12 @@ import { Actions } from 'src/store/actions';
 export class FavoritesComponent implements OnInit {
   favoriteCities: City[] = [];
 
-  // mockFavoriteCities: City[] = [
-  //   {
-  //     id: '215854',
-  //     name: 'Tel Aviv',
-  //     currentWeather: {},
-  //   },
-  //   {
-  //     id: '254674',
-  //     name: 'London',
-  //     currentWeather: {},
-  //   },
-  //   {
-  //     id: '219874',
-  //     name: 'Paris',
-  //     currentWeather: {},
-  //   },
-  //   {
-  //     id: '213854',
-  //     name: 'New York',
-  //     currentWeather: {},
-  //   },
-  //   {
-  //     id: '254574',
-  //     name: 'Berlinhggfhjk',
-  //     currentWeather: {},
-  //   },
-  //   {
-  //     id: '219784',
-  //     name: 'Rome',
-  //     currentWeather: {},
-  //   },
-  // ];
-
   constructor(
+    private cdr: ChangeDetectorRef,
     private weatherService: WeatherService,
     private store: Store<{ favoriteCities: City[] }>
   ) {
     this.store.subscribe((data: any) => {
-      console.log(data.appState.favoriteCities);
       if (this.favoriteCities.length !== data.appState.favoriteCities.length) {
         this.favoriteCities = data.appState.favoriteCities;
         this.loadCurrentWeatherById();
@@ -73,8 +41,6 @@ export class FavoritesComponent implements OnInit {
         })
       );
       updatedFavoriteCities.forEach((updatedCity) => {
-        console.log(updatedCity);
-
         this.store.dispatch(
           Actions.updateFavoriteCities({ city: updatedCity })
         );
@@ -82,5 +48,10 @@ export class FavoritesComponent implements OnInit {
     } catch (error) {
       console.error('Error fetching current weather data:', error);
     }
+    this.cdr.detectChanges();
+  }
+
+  hasCurrentWeather(city: City): boolean {
+    return Object.keys(city.currentWeather).length > 0;
   }
 }

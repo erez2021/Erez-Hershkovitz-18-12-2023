@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { City } from 'src/models/city.interface';
 import { Actions } from 'src/store/actions';
@@ -13,11 +13,9 @@ import {
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   @Input() dayForecast: any;
   @Input() measureSystem: string = 'Celsius';
-  @Input() title: string = '';
-  @Input() subtitle: string = '';
   @Input() cityDetails: any;
 
   heartImage: string = 'assets/icons/redheart.png';
@@ -26,10 +24,6 @@ export class CardComponent implements OnInit {
     this.store.subscribe((data: any) => {
       this.measureSystem = data.appState.measureSystem;
     });
-  }
-
-  ngOnInit(): void {
-    console.log(this.cityDetails);
   }
 
   getDay(dateString: string) {

@@ -1,5 +1,5 @@
 <div>
-  <div *ngIf="favoriteCities.length; else noFavorites">
+  <div *ngIf="favoriteCities.length && favoriteCities.every(hasCurrentWeather)">
     <div class="favorites-container">
       <div *ngFor="let city of favoriteCities">
         <app-card [cityDetails]="city" />
@@ -7,9 +7,9 @@
     </div>
   </div>
 
-  <ng-template #noFavorites>
-    <div class="no-content">
-      <h2>No favorite cities yet</h2>
-    </div>
-  </ng-template>
+  <!-- <ng-template #noFavorites> -->
+  <div class="no-content" *ngIf="!favoriteCities.length">
+    <h2>No favorite cities yet</h2>
+  </div>
+  <!-- </ng-template> -->
 </div>

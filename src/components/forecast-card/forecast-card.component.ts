@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { getDayByDate } from 'src/utils/utils';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Actions } from 'src/store/actions';
@@ -10,7 +9,7 @@ import { City } from 'src/models/city.interface';
   templateUrl: './forecast-card.component.html',
   styleUrls: ['./forecast-card.component.scss'],
 })
-export class ForecastCardComponent implements OnInit {
+export class ForecastCardComponent {
   @Input() selectedCityForecast?: any[] = [];
   @Input() selectedCity: City = {
     id: '',
@@ -35,9 +34,6 @@ export class ForecastCardComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    console.log(this.selectedCity);
-  }
   toggleAddToFavorites() {
     this.toggledImage =
       this.toggledImage === 'assets/icons/heart.png'
