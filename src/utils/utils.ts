@@ -16,7 +16,10 @@ export const getImageByPhrase = (phrase: string) => {
   const lowercasedPhrase = phrase.toLowerCase();
   if (lowercasedPhrase.includes('snow')) {
     return 'snow';
-  } else if (lowercasedPhrase.includes('rain')) {
+  } else if (
+    lowercasedPhrase.includes('rain') ||
+    lowercasedPhrase.includes('shower')
+  ) {
     return 'rain';
   } else if (lowercasedPhrase.includes('cloud')) {
     return 'cloudy';

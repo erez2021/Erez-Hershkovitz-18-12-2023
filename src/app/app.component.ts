@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { Actions } from 'src/store/actions';
@@ -8,11 +8,9 @@ import { Actions } from 'src/store/actions';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   constructor(private store: Store<{ measureSystem: string }>) {}
   title = 'weather-app';
-
-  ngOnInit(): void {}
 
   measureSystemChange(event: any) {
     this.store.dispatch(
